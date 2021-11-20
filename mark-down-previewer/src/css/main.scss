@@ -1,3 +1,53 @@
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin scroll() {
+    overflow: scroll;
+}
+
 body {
-    display:flex
+    background-color: rgb(100, 150, 180)
+}
+
+.pre-preview-main-div {
+    @include flexCenter();
+    textarea {
+        @include scroll();
+        width: 500px;
+        height: 300px;
+    }
+}
+
+.post-preview-main-div {
+    @include flexCenter();
+    margin-top: 20px;
+    textarea {
+        @include scroll();
+        width: 800px;
+        height: 500px;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-preview-main-div {
+    margin: 20px auto;
+    white-space: pre-line;
+    background-color: rgb(80, 80, 80);
+    width: 700px;
+    min-width: 500px;
+    overflow: scroll;
+    border: none;
+    outline: none;
+    div {
+        * {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
 }
