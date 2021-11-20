@@ -1,36 +1,19 @@
 import './css/main.css';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import PrePreviewField from './components/raw-markDown-text-component';
-import PostPreviewField from './components/post-preview-field';
-import { marked } from 'marked';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Main } from './new-post';
 
-class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            rawText: ''
-        }
-    }
-
-    getRawText(e) {
-        this.setState ({
-            rawText: marked.parse(e.target.value)
-        })
-    }
-
-    outPutMarkedText(text) {
-       return text;
-    }
-
+class App extends React.Component {
     render() {
         return (
-            <main>
-               < PrePreviewField onKeyUp={(e) => this.getRawText(e)}/>
-               < PostPreviewField postText={this.outPutMarkedText(this.state.rawText) }/>
-            </main>
+              <Routes>
+                    <Route path='' element={ <Main /> } ></Route>
+                    <Route path={'posts'} element={ <Main /> }></Route>
+                   {/*  <Route path={'home'}></Route> */}
+              </Routes>
         )
     }
 } 
 
-ReactDOM.render(< Main />, document.getElementById('root'));
+ReactDOM.render(<Router>< App /></Router>, document.getElementById('root'));
